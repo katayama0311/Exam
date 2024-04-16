@@ -19,11 +19,8 @@ public class SubjectDAO  extends DAO{
 		
 			
 			Subject subject = new Subject();
-			School school = new School();
 			subject.setCd(cd);
 			subject.setName(rs.getString("name"));
-			school.setCd(rs.getString("cd"));
-			school.setName(rs.getString("name"));
 			subject.setSchool(school);
 			
 			st.close();
