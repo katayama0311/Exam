@@ -29,7 +29,7 @@ public class TestListSubject implements java.io.Serializable{
 		return points;
 	}
 	public String getPoint(int key) {
-		return points;
+		return String.valueOf(points.getOrDefault(key, 0));
 	}
 	public void setEntYear(int entYear) {
 		this.entYear=entYear;

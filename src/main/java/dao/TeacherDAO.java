@@ -4,10 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import bean.School;
 import bean.Teacher;
 
-public class TeacherDAO {
+public class TeacherDAO extends DAO{
 	public Teacher login(String id, String password) throws Exception {
+
 		Teacher teacher = new Teacher();
 		School school = new School();
 		

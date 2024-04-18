@@ -3,6 +3,9 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
+
 import bean.School;
 import bean.Subject;
 
@@ -35,8 +38,55 @@ public class SubjectDAO  extends DAO{
 		
 		Connection con = getConnection();
 		
-		PreparedStatement st2 = con.prepareStatement(
-			"select * from subject join school on subject.school_cd = school.cd where school_cd = ?");
+		PreparedStatement st = con.prepareStatement(
+			"select * from subject where school_cd = ?");
+		st.setString(1,school.getCd());
+		ResultSet rs = st.executeQuery();
+	
+		while (rs.next()) {
+			Subject subject = new Subject();
+			subject.setCd(rs.getString("cd"));
+			subject.setName(rs.getString("name"));
+			list.add(subject);
+		}
 		
+		st.close();
+		con.close();
+		
+		return list;
+	}
+	
+	public boolean save(Subject subject) throws Exception {
+		
+		Connection con = getConnection();
+		
+		PreparedStatement st = con.prepareStatement(
+			"insert into subject (cd, name, school_cd values (?, ?, ?)");
+		st.setString(1, subject.getCd());
+		st.setString(2, subject.getName());
+		st.setString(3, subject.getSchool().getCd());
+		
+		int rowsInserted = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return rowsInserted > 0;
+	}
+	
+	public boolean delete(Subject subject) throws Exception {
+		
+		Connection con = getConnection();
+		
+		PreparedStatement st = con.prepareStatement(
+			"delete from subject where cd = ?");
+		st.setString(1, subject.getCd());
+		
+		int rowsInserted = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return rowsInserted > 0;
 	}
 }
