@@ -1,15 +1,13 @@
-package Log;
+package log;
 
 import bean.Teacher;
 import dao.TeacherDAO;
-//import bean.Customer;
-//import dao.CustomerDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class loginAction extends Action {
+public class LoginAction extends Action {
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
