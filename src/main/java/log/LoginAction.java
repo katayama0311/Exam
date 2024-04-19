@@ -20,11 +20,11 @@ public class LoginAction extends Action {
 		TeacherDAO dao=new TeacherDAO();
 		Teacher teacher=dao.login(id, password);
 		
-		if (teacher!=null) {
-			session.setAttribute("customer", teacher);
-			return "main.jsp";
+		if (teacher != null) {
+		    session.setAttribute("teacher", teacher);
+		    return "../Main/main.jsp";
 		}
 		
-		return "login-error.jsp";
+		return "../Log/login-error.jsp";
 	}
 }

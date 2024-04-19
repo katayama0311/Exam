@@ -3,7 +3,7 @@
 <%@include file="../kyoutu/sidebar.jsp" %>
 
 <h2>ログイン</h2>
-<form action="Login.action" method="post">
+<form action="../log/Login.action" method="post">
 	<input type="text" name="id" placeholder="ID" />
 	<input type="password" name="password" placeholder="パスワード" />
 	<input type="checkbox" name="chk_d_ps">

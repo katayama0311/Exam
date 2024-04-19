@@ -2,6 +2,6 @@
 <%@include file="../kyoutu/header.jsp" %>
 
 <p>ログアウトしますか？</p>
-<p><a href="logout.action">ログアウト</a></p>
+<p><a href="../log/Logout.action">ログアウト</a></p>
 
 <%@include file="../kyoutu/footer.jsp" %>

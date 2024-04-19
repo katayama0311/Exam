@@ -1,8 +1,8 @@
 <%@page contentType="text/html; charset=UTF-8" %>
-<%@include file="../header.jsp" %>
+<%@include file="../kyoutu/header.jsp" %>
 
 <h2>ログアウト</h2>
 <p>ログアウトしました</p>
-<a href="login-in.jsp">ログイン</a> 
+<a href="../Log/login-in.jsp">ログイン</a> 
 
-<%@include file="../footer.jsp" %>
+<%@include file="../kyoutu/footer.jsp" %>
