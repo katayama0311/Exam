@@ -33,11 +33,25 @@
 		</th>
 	</tr>
 </table>
-<form action="" >
-	<input type="submit" value="検索">
-</form>
+<input type="button" value="検索">
 
-<h2>科目：</h2>
+<h2>科目:</h2>
 <table>
-	<tr></table>
+	<tr>
+		<th>入学年度</th>
+		<th>クラス</th>
+		<th>学生番号</th>
+		<th>氏名</th>
+		<th>点数</th>
+	</tr>
+	<tr>
+		<th>a</th>
+		<td>a</td>
+		<td>a</td>
+		<td>a</td>
+		<input type="text" name="int_${学生番号}>
+	</tr>
+</table>
+<input type="button" value="登録して終了">
+
 <%@include file="../kyoutu/footer.jsp" %>

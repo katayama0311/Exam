@@ -5,7 +5,7 @@
 <h2>メニュー</h2>
 <a href="">学生管理</a>
 <div>
-	<a href="">成績管理</a>
+	<a href="../Grades/grades-mgt.jsp">成績管理</a>
 	<a href="">成績登録</a>
 	<a href="">成績参照</a>
 </div>

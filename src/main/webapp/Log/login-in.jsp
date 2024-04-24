@@ -8,7 +8,7 @@
 	<input type="password" name="password" placeholder="パスワード" />
 	<input type="checkbox" name="chk_d_ps">
 	<label>パスワードを表示</label>
-	<input type="submit" name="login">
+	<input type="submit" name="login" value="ログイン">
 </form>
 
 
