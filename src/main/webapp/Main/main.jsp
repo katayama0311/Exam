@@ -9,6 +9,6 @@
 	<a href="">成績登録</a>
 	<a href="">成績参照</a>
 </div>
-<a href="">科目管理</a>
+<a href="../subject/Subject.action">科目管理</a>
 
 <%@include file="../kyoutu/footer.jsp" %>

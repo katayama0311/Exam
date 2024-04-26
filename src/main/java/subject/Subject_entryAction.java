@@ -1,5 +1,7 @@
 package subject;
 
+
+
 import java.util.List;
 
 import bean.School;
@@ -11,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class SubjectAction extends Action {
+public class Subject_entryAction extends Action {
 	public String execute(
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
