@@ -4,7 +4,7 @@
 <div class="login-side">
 	<nav>
     	<a href="">メニュー</a>
-    	<a href="">学生管理</a>
+    	<a href="../Student/student-list.jsp">学生管理</a>
     	<ul>
     		<li>成績管理</li>
     	</ul>
