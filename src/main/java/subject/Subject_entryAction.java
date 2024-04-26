@@ -24,6 +24,7 @@ public class Subject_entryAction extends Action {
 		School school=teacher.getSchool();
 		SubjectDAO dao=new SubjectDAO();
 		List<Subject> list=dao.filter(school);  
+		
 
 		session.setAttribute("subject_list", list); // 科目一覧をsubject_listという名前で保存
 
