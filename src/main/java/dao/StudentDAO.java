@@ -14,33 +14,39 @@ public class StudentDAO extends DAO{
 		
 		Connection con = getConnection();
 		
-		PreparedStatement st = con.prepareStatement("select * from student join school on student.school_cd = school.cd where no = ?");
+		PreparedStatement st = con.prepareStatement(
+				"select * from student join school on student.school_cd = school.cd where no = ?");
 				st.setString(1,no);
 		ResultSet rs = st.executeQuery();
 		
 		
-	        Student student =new Student();
-	        student.setEntYear(rs.getInt("entYear"));
-	        student.setNo(no);
-	        student.setName(rs.getString("name"));
-	        student.setClassNum(rs.getString("classNum"));
-	        student.setAttend(rs.getBoolean("isAttend"));
+	        Student stu =new Student();
+	        School sch = new School();
+	        stu.setEntYear(rs.getInt("ent_Year"));
+	        stu.setNo(rs.getString("no"));
+	        stu.setName(rs.getString("name"));
+	        stu.setClassNum(rs.getString("class_Num"));
+	        stu.setAttend(rs.getBoolean("is_Attend"));
+	        sch.setCd(rs.getString("cd"));
+	        sch.setName(rs.getString("name"));
+	        stu.setSchool(sch);
+	        
 	        
 	        st.close();
 	        con.close();
 	        
-	        return student;
+	        return stu;
 	}
 	
 	public List<Student> postFilter(ResultSet rSet, School school) throws Exception {
 		List<Student> list = new ArrayList<>();
 		while(rSet.next()) {
 			Student stu = new Student();
-			stu.setEntYear(rSet.getInt("entYear"));
+			stu.setEntYear(rSet.getInt("ent_Year"));
 			stu.setNo(rSet.getString("no"));
 			stu.setName(rSet.getString("name"));
-			stu.setClassNum(rSet.getString("classNum"));
-			stu.setAttend(rSet.getBoolean("isAttend"));
+			stu.setClassNum(rSet.getString("class_Num"));
+			stu.setAttend(rSet.getBoolean("is_Attend"));
 			stu.setSchool(school);
 			
 			list.add(stu);
@@ -49,12 +55,11 @@ public class StudentDAO extends DAO{
 	}
 	
 	public List<Student> filter(School school, int entYear, String classNum, boolean isAttend) throws Exception{
-		List<Student> list = new ArrayList<>();
 		
 		Connection con = getConnection();
 		
 		PreparedStatement st = con.prepareStatement(
-			"select * from student join school on student.school_cd = school.cd where school_cd = ? and ent_year = ? and class_num = ? and is_attend = ?");
+			"select * from student where school_cd = ? and ent_year = ? and class_num = ? and is_attend = ?");
 		st.setString(1, school.getCd());
 		st.setInt(2, entYear);
 		st.setString(3, classNum);
@@ -62,7 +67,7 @@ public class StudentDAO extends DAO{
 		
 		ResultSet rs = st.executeQuery();
 		
-		list = postFilter(rs, school);
+		List<Student> list = postFilter(rs, school);
 		st.close();
 		con.close();
 		
@@ -70,19 +75,18 @@ public class StudentDAO extends DAO{
 	}
 	
 	public List<Student> filter(School school, int entYear, boolean isAttend) throws Exception {
-		List<Student> list = new ArrayList<>();
-		
+
 		Connection con = getConnection();
 		
 		PreparedStatement st = con.prepareStatement(
-				"select * from student join school on student.school_cd = school.cd where school_cd = ? and ent_year = ? and is_attend = ?");
+				"select * from student where school_cd = ? and ent_year = ? and is_attend = ?");
 			st.setString(1, school.getCd());
 			st.setInt(2, entYear);
 			st.setBoolean(3, isAttend);
 			
 			ResultSet rs = st.executeQuery();
 			
-			list = postFilter(rs, school);
+			List<Student> list = postFilter(rs, school);
 			st.close();
 			con.close();
 			
@@ -90,40 +94,56 @@ public class StudentDAO extends DAO{
 	}
 	
 	public List<Student> filter(School school, boolean isAttend) throws Exception {
-		List<Student> list = new ArrayList<>();
-		
+	
 		Connection con = getConnection();
 		
 		PreparedStatement st = con.prepareStatement(
-				"select * from student join school on student.school_cd = school.cd where school_cd = ? and ent_year = ? and class_num = ? and is_attend = ?");
-			st.setString(1, school.getCd());
-			st.setBoolean(2, isAttend);
+			"select * from student where school_cd = ? and ent_year = ? and class_num = ? and is_attend = ?");
+		st.setString(1, school.getCd());
+		st.setBoolean(2, isAttend);
+		
+		ResultSet rs = st.executeQuery();
+		List<Student> list = postFilter(rs, school);list = postFilter(rs, school);
+		st.close();
+		con.close();
 			
-			ResultSet rs = st.executeQuery();
-			
-			list = postFilter(rs, school);
-			st.close();
-			con.close();
-			
-			return list;
+		return list;
 	}
 	
 	public boolean save(Student student) throws Exception {
 			
 		Connection con = getConnection();
 		
-		PreparedStatement st = con.prepareStatement(
-				"insert into student (ent_year, no, name, class_num values (?, ?, ?, ?))");
-		st.setInt(1, student.getEntYear());
-		st.setString(2, student.getNo());
-		st.setString(3, student.getName());
-		st.setString(4, student.getClassNum());
+		PreparedStatement check = con.prepareStatement(
+			"select * from student where no = ?");
+		check.setString(1, student.getNo());
+		ResultSet line = check.executeQuery();
+		
+		boolean isSave = true;
+		if (isSave == true) {
+			PreparedStatement st = con.prepareStatement(
+				"update student set (name, class_num, is_attend) = (?, ?, ?) where no = ?");
+			st.setString(1, student.getName());
+			st.setString(2, student.getClassNum());
+			st.setBoolean(3, student.isAttend());
 			
-		int rowsInserted = st.executeUpdate();
+			st.close();
 			
-		st.close();
+			return ;
+		}
+		else {
+			PreparedStatement st = con.prepareStatement(
+					"insert into student (ent_year, no, name, class_num) values (?, ?, ?, ?)");
+			st.setInt(1, student.getEntYear());
+			st.setString(2, student.getNo());
+			st.setString(3, student.getName());
+			st.setString(4, student.getClassNum());
+				
+			st.close();
+			
+			return ;
+		}
+		check.close();
 		con.close();
-			
-		return rowsInserted > 0;
 	 }	
 }
