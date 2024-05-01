@@ -3,7 +3,7 @@
 <%@include file="../kyoutu/login-sidebar.jsp" %>
 
 <h2>メニュー</h2>
-<a href="">学生管理</a>
+<a href="../student/StudentList.action">学生管理</a>
 <div>
 	<a href="../Grades/grades-mgt.jsp">成績管理</a>
 	<a href="">成績登録</a>

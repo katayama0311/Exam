@@ -20,7 +20,7 @@ public class Student implements java.io.Serializable{
 	public String getClassNum() {
 		return classNum;
 	}
-	public boolean isAttend() {
+	public boolean getIsAttend() {
 		return isAttend;
 	}
 	public School getSchool() {
@@ -38,7 +38,7 @@ public class Student implements java.io.Serializable{
 	public void setClassNum(String classNum) {
 	    this.classNum=classNum;
 	}
-	public void setAttend(boolean isAttend) {
+	public void setIsAttend(boolean isAttend) {
 		this.isAttend=isAttend;
 	}
 	public void setSchool(School school) {

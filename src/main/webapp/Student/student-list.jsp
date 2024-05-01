@@ -1,6 +1,11 @@
-<%@page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="../kyoutu/login-header.jsp" %>
-<%@include file="../kyoutu/login-sidebar.jsp" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div class="sidebar">
+	<%@include file="../kyoutu/login-sidebar.jsp" %>
+</div>
 
 <div id="main">
 	<h2>学生管理</h2>
@@ -17,12 +22,14 @@
 	<label for="f2">クラス</label>
 	<select name="f2" id="f2">
 		<option value="temp">------</option>
+
 	</select>
 		
 	
 	<label for="f3">在学中</label>
 		<input type="checkbox"name="f3" id="f3" value="f3">
-	
+		
+		
 	<table>
 		<tr>
 			<th>入学年度</th>
@@ -31,15 +38,22 @@
 			<th>クラス</th>
 			<th>在学中</th>
 		</tr>
+		<c:forEach var="student" items="${ student_list}">
 		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
+			<td>${ student.entYear}</td>
+			<td>${ student.no}</td>
+			<td>${ student.name}</td>
+			<td>${ student.classNum}</td>
+			<c:choose>
+    			<c:when test="${student.isAttend}">
+        			<td>〇</td>
+    			</c:when>
+    			<c:otherwise>
+        			<td>×</td> <!-- isAttend が false の場合は × を表示 -->
+    			</c:otherwise>
+			</c:choose>
+			<td><a href="../student/StudentUpdate.action">変更</a></td>
 		</tr>
-		
+		</c:forEach>
 	</table>
 </div>
-
-<%@include file="../kyoutu/footer.jsp" %>
