@@ -14,16 +14,15 @@ public class ClassNumDAO extends DAO {
 		Connection con = getConnection();
 		
 		PreparedStatement st = con.prepareStatement(
-			"select * from student where school_cd = ?");
+			"select class_num from class_num where school_cd = ?");
 		st.setString(1, school.getCd());
 		
 		ResultSet rs = st.executeQuery();
 		
 		while(rs.next()) {
-			School sch = new School();
-			sch.setCd(rs.getString("cd"));
-			sch.setName(rs.getString("name"));
-			list.add("class_num");
+			String str;
+			str = rs.getString("class_num");
+			list.add(str);
 		}
 		
 		st.close();

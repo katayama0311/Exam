@@ -7,28 +7,32 @@
 	<%@include file="../kyoutu/login-sidebar.jsp" %>
 </div>
 
-<div id="main">
+<div class="main">
 	<h2>学生管理</h2>
 	
-	<a href="student-create.jsp">新規登録</a><p>
-	<label for="f1">入学年度</label>
-	<select name="f1" id="f1">
-		<option value="temp">------</option>
-		<c:forEach var="year" begin="2020" end="2030">
-			<option value=${ year}>${ year}</option>
-		</c:forEach>
-	</select>
-	
-	<label for="f2">クラス</label>
-	<select name="f2" id="f2">
-		<option value="temp">------</option>
-
-	</select>
+	<a href="../Student/student-create.jsp">新規登録</a><p>
+	<form action="StudentList.action" method="post">
+		<label for="f1">入学年度</label>
+		<select name="f1" id="f1">
+			<option value="temp">------</option>
+			<c:forEach var="year" begin="2020" end="2030">
+				<option value=${ year}>${ year}</option>
+			</c:forEach>
+		</select>
 		
-	
-	<label for="f3">在学中</label>
+		<label for="f2">クラス</label>
+		<select name="f2" id="f2">
+			<option value="temp">------</option>
+			
+		</select>
+			
+		
+		<label for="f3">在学中</label>
 		<input type="checkbox"name="f3" id="f3" value="f3">
 		
+		
+		<input  type="submit" name="login" value="絞込み">
+	</form>
 		
 	<table>
 		<tr>
