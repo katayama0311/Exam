@@ -21,8 +21,8 @@ public class Subject_entryAction extends Action {
 		
 		Subject subject = new Subject();
 //		TODO:必要な情報を取得
-		String id=request.getParameter("cd");
-		subject.setCd("cd");
+		String cd=request.getParameter("cd");
+		subject.setCd(cd);
 		String name=request.getParameter("name");
 		subject.setName(name);
 		SubjectDAO dao=new SubjectDAO();
