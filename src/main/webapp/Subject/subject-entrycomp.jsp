@@ -13,5 +13,5 @@
 
 
 <a href="../Subject/subject-entry.jsp">戻る</a>
-<a href="../Subject/subject-list.jsp">科目一覧</a>
+<a href="../subject/Subject.action">科目一覧</a>
 </table>
