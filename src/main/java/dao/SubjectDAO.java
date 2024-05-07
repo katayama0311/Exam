@@ -61,10 +61,11 @@ public class SubjectDAO  extends DAO{
 		Connection con = getConnection();
 		
 		PreparedStatement st = con.prepareStatement(
-			"insert into subject (cd, name, school_cd values (?, ?, ?)");
-		st.setString(1, subject.getCd());
-		st.setString(2, subject.getName());
-		st.setString(3, subject.getSchool().getCd());
+			"insert into subject values (?, ?, ?)");
+		st.setString(1, subject.getSchool().getCd());
+		st.setString(2, subject.getCd());
+		st.setString(3, subject.getName());
+
 		
 		int rowsInserted = st.executeUpdate();
 		
