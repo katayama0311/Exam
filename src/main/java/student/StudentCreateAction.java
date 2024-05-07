@@ -29,6 +29,6 @@ public class StudentCreateAction extends Action{
 		session.setAttribute("class_list", classlist);
 		request.setAttribute("student_list", studentlist);
 		
-		return "../Student/student-list.jsp";
+		return "../Student/student-create.jsp";
 	}
 }
