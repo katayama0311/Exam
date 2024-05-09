@@ -11,30 +11,32 @@ import bean.Student;
 
 public class StudentDAO extends DAO{
 	public Student get(String no) throws Exception {
-		
 		Connection con = getConnection();
-		
 		PreparedStatement st = con.prepareStatement(
 				"select * from student join school on student.school_cd = school.cd where no = ?");
-				st.setString(1,no);
+				st.setString(1, no);
 		ResultSet rs = st.executeQuery();
 		
 		
-	        Student stu =new Student();
+		Student stu =new Student();
+		if (rs.next()) {
+	        
 	        School sch = new School();
 	        stu.setEntYear(rs.getInt("ent_Year"));
-	        stu.setNo(rs.getString("no"));
+	        stu.setNo(no);
 	        stu.setName(rs.getString("name"));
+	        System.out.println(stu.getName());
 	        stu.setClassNum(rs.getString("class_Num"));
 	        stu.setIsAttend(rs.getBoolean("is_Attend"));
 	        sch.setCd(rs.getString("cd"));
 	        sch.setName(rs.getString("name"));
 	        stu.setSchool(sch);
+		}
 	        
-	        st.close();
-	        con.close();
+	     st.close();
+	     con.close();
 	        
-	        return stu;
+	     return stu;
 	}
 	
 	public List<Student> postFilter(ResultSet rSet, School school) throws Exception {

@@ -34,15 +34,16 @@ public class StudentCreateExecuteAction extends Action{
 		if (entYear == -1) {
 			request.setAttribute("Era", -1);
 			request.setAttribute("studentinfo", stu);
-			return "student-create.jsp";
+			return "../Student/student-create.jsp";
 		}
 		else if (dao.get(no).getNo() == null) {
 			dao.save(stu);
-			return "student-create-done.jsp";
+			return "../Student/student-create-done.jsp";
 		}
 		else {
 			request.setAttribute("Kira", -1);
-			return "student-create.jsp";
+			return "../Student/student-create.jsp";
 		}
+		
 	}
 }
