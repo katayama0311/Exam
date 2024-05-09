@@ -9,4 +9,4 @@
 <p></p>
 <input type="submit" name="del" value="削除"/>
 
-<a href="../Subject/subject-entry.jsp">戻る</a>
+<a href="../subject/Subject.action">戻る</a>
