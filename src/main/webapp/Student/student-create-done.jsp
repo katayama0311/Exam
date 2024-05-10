@@ -9,7 +9,7 @@
 		<div>
 			<h2>学生情報登録</h2>
 			<p>登録が完了しました</p>
-			<a href="student-create.jsp">戻る</a>
+			<a href="../Student/student-create.jsp">戻る</a>
 			<a href="../student/StudentList.action">学生一覧</a>
 		</div>
 	</div>

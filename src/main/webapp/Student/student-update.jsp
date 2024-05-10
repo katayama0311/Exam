@@ -7,33 +7,41 @@
 	<%@include file="../kyoutu/login-sidebar.jsp" %>
 	<div id="main">
 		<div>
-			<h2>学生情報登録</h2>
-			<form action="StudentUpdateExecute.action">
+			<h2>学生情報変更</h2>
+			<form action="../student/StudentUpdateExecute.action">
 				<label for="ent_year">入学年度</label>
-				<input type="text" value="${ ent_year}" readonly>
+				<input type="text" name="ent_year" value="${ student.entYear}" readonly>
 				<br>
 				
 				<label for="no">学生番号</label>
-				<input type="text" value="${ no}" readonly>
+				<input type="text" name="no" value="${ student.no}" readonly>
 				<br>
 				
 				<label for="name">氏名</label>
-				<input type="text"name="name" value="${ name}">
+				<input type="text"name="name" value="${ student.name}" required>
 				<br>
 			
 				<label for="class_num">クラス</label>
 				<select name="class_num" id="class_num">
+					<option value=${ student.classNum}>${ student.classNum}
 					<c:forEach var="num" items="${ classlist}">
 						<option value=${ num}>${ num}</option>
 					</c:forEach>
 				</select>
 				<br>
 
-				<label><input type="checkbox" name="si_attend" value="true" checked>在学中</label>
+				<c:choose>
+					<c:when test="${ student.isAttend == true}">
+						<label><input type="checkbox" name="is_attend" value="true" checked>在学中</label>
+					</c:when>
+					<c:otherwise>
+						<label><input type="checkbox" name="is_attend" value="true">在学中</label>
+					</c:otherwise>
+				</c:choose>
 				<br>
 				
 				<td>
-					<input  type="submit" value="絞込み">
+					<input  type="submit" value="変更">
 				</td>
 			</form>
 		</div>
