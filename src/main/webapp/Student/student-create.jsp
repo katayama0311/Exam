@@ -24,10 +24,10 @@
 				<label for="no">学生番号</label>
 				<c:choose>
 					<c:when test="${ Era == -1}">
-						<input type="text" name="no" value="${ studentinfo.no}" placeholder="学生番号を入力してください" required>
+						<input type="text" name="no" value="${ studentinfo.no}" maxlength=10 placeholder="学生番号を入力してください" required>
 					</c:when>
 					<c:otherwise>
-						<input type="text" name="no" value="${ no}" placeholder="学生番号を入力してください" required>
+						<input type="text" name="no" value="${ no}" maxlength=10 placeholder="学生番号を入力してください" required>
 						<c:if test="${ Kira == -1}">
 							学生番号が重複しています
 						</c:if>
@@ -39,10 +39,10 @@
 				<label for="name">氏名</label>
 				<c:choose>
 					<c:when test="${ Era == -1}">
-						<input type="text" name="name" value="${ studentinfo.name}" placeholder="氏名を入力してください" required>
+						<input type="text" name="name" value="${ studentinfo.name}" maxlength=10 placeholder="氏名を入力してください" required>
 						</c:when>
 					<c:otherwise>
-						<input type="text" name="name" value="${ name}" placeholder="氏名を入力してください" required>
+						<input type="text" name="name" value="${ name}" maxlength=10 placeholder="氏名を入力してください" required>
 					</c:otherwise>
 				</c:choose>
 				<br>
@@ -51,7 +51,7 @@
 				<c:choose>
 					<c:when test="${ Era == -1}">
 						<select name="class_num" id="class_num">
-							<option value="${ studentinfo.class_num}" selected>${ studentinfo.class_num}</option>
+							<option value=${ studentinfo.classNum} selected>${ studentinfo.classNum}</option>
 							<c:forEach var="num" items="${ classlist}">
 								<option value=${ num}>${ num}</option>
 							</c:forEach>
@@ -71,6 +71,7 @@
 					<input  type="submit" value="登録して終了">
 				</td>
 			</form>
+			<a href="../student/StudentList.action">戻る</a>
 		</div>
 	</div>
 </div>

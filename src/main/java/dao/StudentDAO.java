@@ -14,9 +14,8 @@ public class StudentDAO extends DAO{
 		Connection con = getConnection();
 		PreparedStatement st = con.prepareStatement(
 				"select * from student join school on student.school_cd = school.cd where no = ?");
-				st.setString(1, no);
+		st.setString(1, no);
 		ResultSet rs = st.executeQuery();
-		
 		
 		Student stu =new Student();
 		if (rs.next()) {
@@ -25,7 +24,6 @@ public class StudentDAO extends DAO{
 	        stu.setEntYear(rs.getInt("ent_Year"));
 	        stu.setNo(no);
 	        stu.setName(rs.getString("name"));
-	        System.out.println(stu.getName());
 	        stu.setClassNum(rs.getString("class_Num"));
 	        stu.setIsAttend(rs.getBoolean("is_Attend"));
 	        sch.setCd(rs.getString("cd"));

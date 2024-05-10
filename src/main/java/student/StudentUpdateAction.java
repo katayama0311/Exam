@@ -24,10 +24,12 @@ public class StudentUpdateAction extends Action{
 		List<String> classlist=classdao.filter(teacher.getSchool());
 		
 		StudentDAO studentdao=new StudentDAO();
-		List<Student> studentlist=studentdao.filter(teacher.getSchool());
+		
+		String no = request.getParameter("no");
+		Student stu = studentdao.get(no);
 		
 		session.setAttribute("classlist", classlist);
-		request.setAttribute("studentlist", studentlist);
+		request.setAttribute("student", stu);
 		
 		return "../Student/student-update.jsp";
 	}
