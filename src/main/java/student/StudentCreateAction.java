@@ -26,9 +26,9 @@ public class StudentCreateAction extends Action{
 		StudentDAO studentdao=new StudentDAO();
 		List<Student> studentlist=studentdao.filter(teacher.getSchool());
 		
-		session.setAttribute("class_list", classlist);
-		request.setAttribute("student_list", studentlist);
+		session.setAttribute("classlist", classlist);
+		request.setAttribute("studentlist", studentlist);
 		
-		return "../Student/student-list.jsp";
+		return "../Student/student-create.jsp";
 	}
 }

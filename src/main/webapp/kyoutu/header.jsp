@@ -6,7 +6,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Servlet/JSP Samples</title>
-	<link rel="stylesheet" href="../css/login-in.css">
+	<link rel="stylesheet" href="../css/main.css">
 </head>
 <header>
 	<h1>得点管理システム</h1>

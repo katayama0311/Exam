@@ -11,6 +11,6 @@
 <header>
 	<h1>得点管理システム</h1>
 	<span></span>
-	<a href="Log/logout-in.jsp">ログアウト</a>
+	<a href="../Log/logout-in.jsp">ログアウト</a>
 </header>
 <body>

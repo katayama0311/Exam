@@ -2,10 +2,13 @@ package subject;
 
 
 
+import bean.School;
 import bean.Subject;
+import bean.Teacher;
 import dao.SubjectDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
 public class Subject_entryAction extends Action {
@@ -13,19 +16,25 @@ public class Subject_entryAction extends Action {
 		HttpServletRequest request, HttpServletResponse response
 	) throws Exception {
 
-//		HttpSession session=request.getSession(); // セッションの開始
-//		
-//		Teacher teacher= new Teacher();
-//		teacher = (Teacher)session.getAttribute("teacher");
-//		School school=teacher.getSchool();
+		HttpSession session=request.getSession(); // セッションを取得
+		
+		Teacher teacher= new Teacher();
+		teacher = (Teacher)session.getAttribute("teacher");
+		School school=teacher.getSchool();
 		
 		Subject subject = new Subject();
-//		TODO:必要な情報を取得
+//		必要な情報を取得
+		
 		String cd=request.getParameter("cd");
 		subject.setCd(cd);
+		
 		String name=request.getParameter("name");
 		subject.setName(name);
+		
+		subject.setSchool(school);
 		SubjectDAO dao=new SubjectDAO();
+		
+		
 		if(dao.save(subject)) {
 			return "../Subject/subject-entrycomp.jsp";
 		}  else {
