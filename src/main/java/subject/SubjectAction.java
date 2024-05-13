@@ -19,6 +19,7 @@ public class SubjectAction extends Action {
 		HttpSession session=request.getSession(); // セッションの開始
 		Teacher teacher= new Teacher();
 		teacher = (Teacher)session.getAttribute("teacher");
+		
 		School school=teacher.getSchool();
 		SubjectDAO dao=new SubjectDAO();
 		List<Subject> list=dao.filter(school);  

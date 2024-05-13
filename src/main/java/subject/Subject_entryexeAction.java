@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class Subject_delexeAction extends Action{
+public class Subject_entryexeAction extends Action{
 	public String execute(
 			HttpServletRequest request, HttpServletResponse response
 		) throws Exception {
@@ -17,16 +17,22 @@ public class Subject_delexeAction extends Action{
 		Teacher teacher= new Teacher();
 		teacher = (Teacher)session.getAttribute("teacher");
 		
+		String cd = request.getParameter("cd");
+		String name = request.getParameter("name");
 		
 		Subject subject = new Subject();
-		subject = (Subject)session.getAttribute("del_subject");
-		session.removeAttribute("del_subject");
+		subject.setCd(cd);
+		subject.setName(name);
 		subject.setSchool(teacher.getSchool());
 		
 		SubjectDAO dao = new SubjectDAO();
 		
-		dao.delete(subject);
-		
-		return "../Subject/subject-delcomp.jsp";
+		if (dao.get(cd, teacher.getSchool()).getCd() == null) {
+			dao.save(subject);
+			return "../Subject/subject-entrycomp.jsp";
+		} else {
+			request.setAttribute("Onaji", -1);
+			return "../Subject/subject-entry.jsp";
+		}
 	}
 }

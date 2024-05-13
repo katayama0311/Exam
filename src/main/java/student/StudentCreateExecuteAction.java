@@ -35,12 +35,10 @@ public class StudentCreateExecuteAction extends Action{
 			request.setAttribute("Era", -1);
 			request.setAttribute("studentinfo", stu);
 			return "../Student/student-create.jsp";
-		}
-		else if (dao.get(no).getNo() == null) {
+		}else if (dao.get(no).getNo() == null) {
 			dao.save(stu);
 			return "../Student/student-create-done.jsp";
-		}
-		else {
+		}else {
 			request.setAttribute("Kira", -1);
 			return "../Student/student-create.jsp";
 		}

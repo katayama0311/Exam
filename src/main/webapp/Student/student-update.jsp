@@ -18,7 +18,7 @@
 				<br>
 				
 				<label for="name">氏名</label>
-				<input type="text"name="name" value="${ student.name}" required>
+				<input type="text"name="name" value="${ student.name}" maxlength=10 required>
 				<br>
 			
 				<label for="class_num">クラス</label>

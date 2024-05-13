@@ -68,7 +68,7 @@
 				<br>
 				
 				<td>
-					<input  type="submit" value="登録して終了">
+					<input  type="submit" value="登録">
 				</td>
 			</form>
 			<a href="../student/StudentList.action">戻る</a>

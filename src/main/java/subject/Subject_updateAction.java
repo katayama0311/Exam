@@ -9,12 +9,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import tool.Action;
 
-public class Subject_delAction extends Action{
+public class Subject_updateAction extends Action{
 	public String execute(
 			HttpServletRequest request, HttpServletResponse response
 		) throws Exception {
 		
-			HttpSession session=request.getSession();
+			HttpSession session=request.getSession(); // セッションの開始
 			Teacher teacher= new Teacher();
 			teacher = (Teacher)session.getAttribute("teacher");
 			
@@ -24,9 +24,9 @@ public class Subject_delAction extends Action{
 			String cd = request.getParameter("cd");
 			Subject subject = dao.get(cd, school);
 
-			session.setAttribute("del_subject", subject);
+			request.setAttribute("subject", subject); // 科目一覧をsubject_listという名前で保存
 
-			return "../Subject/subject-del.jsp";
+			return "../Subject/subject-update.jsp"; // subject-list.jspに遷移
 
 		}
 }

@@ -7,10 +7,19 @@
 	<%@include file="../kyoutu/login-sidebar.jsp" %>
 	<div id="main">
 		<div>
-			<h2>科目情報削除</h2>
-			<form action="../subject/Subject_delexe.action">
-				<label><p>「${ del_subject.name}」を削除してもよろしいですか</p></label>
-				<input type="submit" value="削除">
+			<h2>科目情報登録</h2>
+			<form action="../subject/Subject_updateexe.action">
+				<label for="cd">科目コード</label>
+				<input type="text" name="cd" value="${ subject.cd}" readonly>
+				<br>
+			
+				<label for="name">科目名</label>
+				<input type="text" name="name" value="${ subject.name}" maxlength=20 required>
+				<br>
+				
+				<td>
+					<input type="submit" value="変更">
+				</td>
 			</form>
 			<a href="../subject/Subject.action">戻る</a>
 		</div>

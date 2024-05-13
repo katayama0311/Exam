@@ -15,21 +15,21 @@ public class SubjectDAO  extends DAO{
 		Connection con = getConnection();
 	
 		PreparedStatement st = con.prepareStatement(
-			"select * from subject join school on subject.school_cd = school.cd where cd = ? and school_cd = ?");
+			"select * from subject join school on subject.school_cd = school.cd where subject.cd = ? and school_cd = ?");
 		st.setString(1, cd);
 		st.setString(2, school.getCd());
 		ResultSet rs = st.executeQuery();
 		
-			
-			Subject subject = new Subject();
+		Subject subject = new Subject();
+		if (rs.next()) {
 			subject.setCd(cd);
 			subject.setName(rs.getString("name"));
 			subject.setSchool(school);
+		}
+		st.close();
+		con.close();
 			
-			st.close();
-			con.close();
-			
-			return subject;	
+		return subject;	
 	}
 	
 	public List<Subject> filter(School school) throws Exception {
@@ -60,34 +60,50 @@ public class SubjectDAO  extends DAO{
 		
 		Connection con = getConnection();
 		
-		PreparedStatement st = con.prepareStatement(
-			"insert into subject values (?, ?, ?)");
-		st.setString(1, subject.getSchool().getCd());
-		st.setString(2, subject.getCd());
-		st.setString(3, subject.getName());
-
+		PreparedStatement check = con.prepareStatement(
+			"select * from subject where cd = ?");
+		check.setString(1, subject.getCd());
+		ResultSet line = check.executeQuery();
 		
-		int rowsInserted = st.executeUpdate();
+		boolean isSave = true;
 		
-		st.close();
+		if (line.next()) {
+			PreparedStatement st = con.prepareStatement(
+				"update subject set school_cd=?, name=? where cd = ?");
+			st.setString(1, (subject.getSchool()).getCd());
+			st.setString(2, subject.getName());
+			st.setString(3, subject.getCd());
+			st.executeUpdate();
+			st.close();
+		}
+		else {
+			PreparedStatement st = con.prepareStatement(
+				"insert into subject values (?, ?, ?)");
+			st.setString(1, (subject.getSchool()).getCd());
+			st.setString(2, subject.getCd());
+			st.setString(3, subject.getName());
+			st.executeUpdate();
+			st.close();
+		}
+		check.close();
 		con.close();
-		
-		return rowsInserted > 0;
+		return isSave;
 	}
 	
-	public int delete(Subject subject) throws Exception {
+	
+	public boolean delete(Subject subject) throws Exception {
 		
 		Connection con = getConnection();
 		
 		PreparedStatement st = con.prepareStatement(
 			"delete from subject where cd = ?");
 		st.setString(1, subject.getCd());
-		
-		int rowsInserted = st.executeUpdate();
-		
+		st.executeUpdate();
 		st.close();
 		con.close();
 		
-		return rowsInserted;
+		boolean isDelete = true;
+		
+		return isDelete;
 	}
 }
