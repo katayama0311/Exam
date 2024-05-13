@@ -6,9 +6,6 @@
 
 <h2>科目情報削除</h2>
 
-<p>を削除しますよろしいですか</p>
-<form action="Subject_del.action">>
-<input type="submit" name="del" value="削除"/>
-</form>
+<p>削除が完了しました</p>
 
-<a href="../subject/Subject.action">戻る</a>
+<a href="../subject/Subject.action">科目一覧</a>

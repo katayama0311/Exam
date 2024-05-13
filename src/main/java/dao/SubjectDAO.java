@@ -75,7 +75,7 @@ public class SubjectDAO  extends DAO{
 		return rowsInserted > 0;
 	}
 	
-	public boolean delete(Subject subject) throws Exception {
+	public int delete(Subject subject) throws Exception {
 		
 		Connection con = getConnection();
 		
@@ -88,6 +88,6 @@ public class SubjectDAO  extends DAO{
 		st.close();
 		con.close();
 		
-		return rowsInserted > 0;
+		return rowsInserted;
 	}
 }
