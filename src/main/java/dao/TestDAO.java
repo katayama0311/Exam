@@ -6,9 +6,28 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import bean.School;
+import bean.Student;
+import bean.Subject;
 import bean.Test;
 
 public class TestDAO extends DAO{
+	public Test get(Student student, Subject subject, School school, int no) throws Exception {
+		Connection con=getConnection();
+		 PreparedStatement st=con.prepareStatement(
+			 "select * from student right outer join test on student.no = test.student_no right join subject on test.subject_cd = subject_cd where student.ent_year = ? and student.class_num = ? and cd = ? and test.no = ?");
+		 st.setInt(1, student.getEntYear());
+		 st.setString(2, subject.getCd());
+		 st.setString(3, school.getCd());
+		 st.setInt(4, no);
+		 
+		 ResultSet rs=st.executeQuery();
+		 
+		 while
+		 
+		 
+	}
+	
 	 public List<Test> search(int ent_year, String class_num, String subject_cd, int no)
 	 throws Exception {
 		 List<Test> test=new ArrayList<>();
