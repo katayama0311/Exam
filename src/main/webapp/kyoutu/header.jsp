@@ -5,8 +5,10 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Servlet/JSP Samples</title>
-	<link rel="stylesheet" href="../css/main.css">
+	<title>得点管理システム</title>
+	<style>
+		<%@include file="../css/login.css" %>
+	</style>
 </head>
 <header>
 	<h1>得点管理システム</h1>

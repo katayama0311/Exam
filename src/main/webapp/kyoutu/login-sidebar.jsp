@@ -2,14 +2,16 @@
 	pageEncoding="UTF-8"%>
 	
 <div class="login-side">
-	<nav>
-    	<a href="">メニュー</a>
-    	<a href="../student/StudentList.action">学生管理</a>
-    	<ul>
-    		<li>成績管理</li>
-    	</ul>
-    	<a href="">成績登録</a>
-    	<a href="">成績参照</a>
-    	<a href="../subject/Subject.action">科目管理</a>
-	</nav>
+	<ul>
+		<li class="current"><a href="#">メニュー</a></li>
+		<li><a href="../student/StudentList.action">学生管理</a></li>
+		<p>成績管理</p>
+		<ul>
+			<li><a href="">成績登録</a></li>
+			<li><a href="../Grades/grades-mgt.jsp">成績管理</a></li>
+			<li><a href="">成績参照</a>
+		</ul>
+		<li><a href="../subject/Subject.action">科目管理</a></li>
+	</ul>
+		
 </div>

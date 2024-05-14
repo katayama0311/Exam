@@ -5,12 +5,17 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Servlet/JSP Samples</title>
-	<link rel="stylesheet" href="../css/login-in.css">
+	<title>得点管理システム</title>
+	<style>
+		<%@include file="../css/main.css" %>
+	</style>
 </head>
 <header>
 	<h1>得点管理システム</h1>
 	<span></span>
+	<form action="../log/Login.action">
+		<a>${ teacher.name}様</a>
+	</form>
 	<a href="../Log/logout-in.jsp">ログアウト</a>
 </header>
 <body>
