@@ -2,9 +2,10 @@ package testlist;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import bean.Student;
+import bean.Subject;
 import bean.Test;
+import dao.ClassNumDAO;
 import dao.StudentDAO;
 import dao.SubjectDAO;
 import dao.TestDAO;
@@ -37,9 +38,9 @@ public class TestListAction extends Action {
 		List<Test> t=testdao.search(ent_year, class_num, subject_cd, no);
 		
 		StudentDAO studentdao=new StudentDAO();
-		List<Student> ent=studentdao.searchent();
+		List<Student> ent=studentdao.get();
 		
-		List<Test> s = studentdao.searchtest(ent_year, class_num, subject_cd,no);
+		List<Test> s = studentdao.get(ent_year, class_num, subject_cd,no);
 		
 		if (t.size() != s.size()) {
 			List<Test> tas = new ArrayList<>();
@@ -59,11 +60,11 @@ public class TestListAction extends Action {
 				}
 			}
 			
-			Class_numDAO classdao=new Class_numDAO();
-			List<Class_num> classnumber = classdao.search(scd);
+			ClassNumDAO classdao=new ClassNumDAO();
+			List<String> classnumber = classdao.search(scd);
 			
 			SubjectDAO subjectdao=new SubjectDAO();
-			List<Subject> subject=subjectdao.search(scd);
+			List<Subject> subject=subjectdao.(scd);
 			
 			session.setAttribute("classnumber", classnumber);
 			session.setAttribute("ent", ent);
