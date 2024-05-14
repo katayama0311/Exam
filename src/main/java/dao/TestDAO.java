@@ -22,10 +22,19 @@ public class TestDAO extends DAO{
 		 st.setInt(4, no);
 		 
 		 ResultSet rs=st.executeQuery();
+		 Test test = new Test();
 		 
-		 while
+		 if (rs.next()) {
+			 test.setStudent(student);
+			 test.setSubject(subject);
+			 test.setSchool(school);
+			 test.setNo(no);
+			 test.setPoint(rs.getInt("point"));
+		 }
+		 st.close();
+		 con.close();
 		 
-		 
+		 return test;
 	}
 	
 	 public List<Test> search(int ent_year, String class_num, String subject_cd, int no)
