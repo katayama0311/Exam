@@ -3,9 +3,9 @@
 <%@include file="../kyoutu/login-header.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="wrapper">
+<div class="wrapper">
 	<%@include file="../kyoutu/login-sidebar.jsp" %>
-	<div id="main">
+	<div class="main">
 		<%@include file="student-list-form.jsp" %>
 		<c:choose>
 			<c:when test="${ SAKANANOera == -1}">

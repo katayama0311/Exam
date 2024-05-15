@@ -3,9 +3,9 @@
 <%@include file="../kyoutu/login-header.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div id="wapper">
+<div class="wapper">
 	<%@include file="../kyoutu/login-sidebar.jsp" %>
-	<div id="main">
+	<div class="main">
 		<div>
 			<h2>学生情報変更</h2>
 			<form action="../student/StudentUpdateExecute.action">

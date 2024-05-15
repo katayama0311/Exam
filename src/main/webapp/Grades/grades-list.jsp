@@ -3,17 +3,13 @@
 <%@include file="../kyoutu/login-header.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="wapper">
+<div class="wrapper">
 	<%@include file="../kyoutu/login-sidebar.jsp" %>
 	<div class="main">
-		<div>
-			<h2>科目情報削除</h2>
-			<form action="../subject/Subject_delexe.action">
-				<label><p>「${ del_subject.name}」を削除してもよろしいですか</p></label>
-				<input type="submit" value="削除">
-			</form>
-			<a href="../subject/Subject.action">戻る</a>
-		</div>
+		<%@include file="grades-list-form.jsp" %>
+		
+		<p>科目：${ subject.name} (${ no}回)
+		
 	</div>
 </div>
 <%@include file="../kyoutu/footer.jsp" %>

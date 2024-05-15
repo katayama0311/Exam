@@ -15,8 +15,8 @@ public class TestDAO extends DAO{
 	public Test get(Student student, Subject subject, School school, int no) throws Exception {
 		Connection con=getConnection();
 		 PreparedStatement st=con.prepareStatement(
-			 "select * from student right outer join test on student.no = test.student_no right join subject on test.subject_cd = subject_cd where student.ent_year = ? and student.class_num = ? and cd = ? and test.no = ?");
-		 st.setInt(1, student.getEntYear());
+			 "select * from student inner join test on student.no = test.student_no inner join subject on test.subject_cd = subject.cd where student.no = ? and sbject.cd = ? and test.school_cd = ? and test.no = ?");
+		 st.setString(1, student.getNo());
 		 st.setString(2, subject.getCd());
 		 st.setString(3, school.getCd());
 		 st.setInt(4, no);
@@ -37,73 +37,59 @@ public class TestDAO extends DAO{
 		 return test;
 	}
 	
-	 public List<Test> search(int ent_year, String class_num, String subject_cd, int no)
-	 throws Exception {
-		 List<Test> test=new ArrayList<>();
-		 
-		 Connection con=getConnection();
-		 PreparedStatement st;
-		 st=con.prepareStatement(
-		 		"select * from student right outer join test on student.no = test.student_no right join subject on test.subject_cd = subject_cd where student.ent_year = ? and student.class_num = ? and cd = ? and test.no = ?");
-		 st.setInt(1,  ent_year);
-		 st.setString(2, class_num);
-		 st.setString(3, subject_cd);
-		 st.setInt(4, no);
-		 ResultSet rs=st.executeQuery();
-		 
-		 while (rs.next()) {
-			 Test t = new Test();
-			 t.setSubject_cd(rs.getString("subject_cd"));
-			 t.setEnt_year(rs.getInt("ent_year"));
-			 t.setName(rs.getString("student.name"));
-			 t.setStudent_no(rs.getString("student.no"));
-			 t.setSchool_cd(rs.getString("student.school_cd"));
-			 t.setClass_num(rs.getString("student.class_num"));
-			 t.setPoint(rs.getInt("point"));
-			 t.setNo(rs.getInt("test.no"));
-			 if (t.getSubject_cd() == rs.getString("cd")) {
-				 t.setFlag(true);
-				 test.add(t);
-			 }
-		 }
-		 st.close();
-		 con.close();
-		 return test;
-	 }
-	 
-	 public int registrationpoint(Test test, int point) throws Exception {
-		 
-		 Connection con=getConnection();
-		 
-		 if (test.getFlag() == true) {
-			 PreparedStatement st=con.prepareStatement(
-					 "update test set point = ? where student_no = ? and subject_cd = ? and no = ?");
-			 st.setInt(1,  point);
-			 st.setString(2,  test.getStudent_no());
-			 st.setString(3,  test.getSubject_cd());
-			 st.setInt(4, test.getNo());
-			 int line=st.executeUpdate();
-			 st.close();
-			 con.close();
-			 
-			 return line;
-
-		 } else {
-			 PreparedStatement st=con.prepareStatement(
-					 "insert into test values(?.?.?.?.?.?");
-			 	st.setString(1, test.getStudent_no());
-			 	st.setString(2, test.getSubject_cd());
-			 	st.setString(3, test.getSchool_cd());
-			 	st.setInt(4, test.getNo());
-			 	st.setInt(5, point);
-			 	st.setString(6, test.getClass_num());
-			 	int line=st.executeUpdate();
-			 	st.close();
-			 	con.close();
-			 	
-			 	return line;
-					 
-		 }
-	 }
-		 
+	public List<Test> postFilter(ResultSet rSet, School school) throws Exception {
+		List<Test> list = new ArrayList<>();
+		while(rSet.next()) {
+			Test test = new Test();
+			Student stu = new Student();
+			test.setClassNum(rSet.getString("t.class_num"));
+			test.setPoint(rSet.getInt("t.point"));
+			test.setSchool(school);
+			stu.setEntYear(rSet.getInt("s.ent_year"));
+			stu.setNo(rSet.getString("s.no"));
+			stu.setName(rSet.getString("s.name"));
+			test.setStudent(stu);
+			
+			list.add(test);
+		}
+		return list;
+	}
+	
+	public List<Test> filter(int entYear, String classNum, Subject subject, int num, School school) throws Exception {
+		Connection con=getConnection();
+		PreparedStatement st=con.prepareStatement(
+			"select s.ent_year, t.class_num, s.no, s.name, t.point from test as t inner join student as s on t.student_no = s.no and t.class_num = s.class_num and t.school_cd = s.school_cd where s.ent_year=? and t.class_num=? and t.subject_cd=? and t.no=?");
+		st.setInt(1, entYear);
+		st.setString(2, classNum);
+		st.setString(3, subject.getCd());
+		st.setInt(4, num);
+		st.setString(5, school.getCd());
+		
+		ResultSet rs = st.executeQuery();
+		
+		List<Test> list = postFilter(rs, school);
+		st.close();
+		con.close();
+		
+		return list;
+	}	
+	
+	public boolean save(Test test) throws Exception {
+		
+		Connection con = getConnection();
+		
+		PreparedStatement st = con.prepareStatement(
+			"update test set school_cd=?, point=? where subject_cd=? and student_no=? and no=?");
+		
+		boolean isSave = true;
+		
+		st.setString(1, test.getSchool().getCd());
+		st.setInt(2, test.getPoint());
+		st.executeUpdate();
+		st.close();
+		
+		con.close();
+		return isSave;
+	}
 }
+
