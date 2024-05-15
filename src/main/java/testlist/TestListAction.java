@@ -4,8 +4,10 @@ import java.util.List;
 
 import bean.Subject;
 import bean.Teacher;
+import bean.TestListSubject;
 import dao.ClassNumDAO;
 import dao.SubjectDAO;
+import dao.TestListSubjectDAO;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -31,4 +33,20 @@ public class TestListAction extends Action {
 		
 		return "../Grades/grades-list.jsp";
 	}
+	
+	public void setTestListSubject(
+			HttpServletRequest request, HttpServletResponse response
+		) throws Exception {
+		
+			HttpSession session=request.getSession();
+			Teacher teacher=new Teacher();
+			teacher=(Teacher)session.getAttribute("teacher");
+			
+			TestListSubjectDAO testlistsubjectdao=new TestListSubjectDAO();
+			List<TestListSubject> testlistsubjectlist=testlistsubjectdao.filter(0, null, null, teacher.getSchool());
+			
+			session.setAttribute("testlistsubjectlist", testlistsubjectlist);
+			
+	}
+	
 }
