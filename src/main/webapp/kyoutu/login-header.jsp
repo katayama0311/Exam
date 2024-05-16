@@ -12,7 +12,6 @@
 </head>
 <header>
 	<h1>得点管理システム</h1>
-	<span></span>
 	<form action="../log/Login.action">
 		<a>${ teacher.name}様</a>
 	</form>

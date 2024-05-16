@@ -1,4 +1,4 @@
-.action<%@page pageEncoding="UTF-8" %>
+<%@page pageEncoding="UTF-8" %>
 
 		<div>
 			<h2>成績管理</h2>
