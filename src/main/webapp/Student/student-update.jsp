@@ -18,6 +18,7 @@
 				<div id="in">
 					<label for="no">学生番号</label><br>
 					<input type="text" name="no" value="${ student.no}" readonly>
+				</div>
 				<br>
 				
 				<div id="in">
