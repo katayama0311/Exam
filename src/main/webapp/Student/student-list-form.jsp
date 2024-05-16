@@ -43,8 +43,6 @@
 			</c:otherwise>
 		</c:choose>
 		
-		<td>
-			<input  type="submit" value="絞込み">
-		</td>
+		<input  type="submit" value="絞込み">
 	</form>
 </div>

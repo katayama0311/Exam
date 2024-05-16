@@ -18,7 +18,7 @@
 						</c:forEach>
 					</select>
 						<c:if test="${ Era == -1}">
-							入学年度を入力してください
+							<p>入学年度を入力してください
 						</c:if>
 				</div>
 				<br>
@@ -32,7 +32,7 @@
 						<c:otherwise>
 							<input type="text" name="no" value="${ no}" maxlength=10 placeholder="学生番号を入力してください" required>
 							<c:if test="${ Kira == -1}">
-								学生番号が重複しています
+								<p>学生番号が重複しています
 							</c:if>
 						</c:otherwise>
 					</c:choose>
@@ -74,7 +74,9 @@
 				</div>
 				<br>
 				
-				<input  type="submit" value="登録">
+				<div id="GACKT">
+					<input  type="submit" value="登録して終了">
+				</div>
 			</form>
 			<a href="../student/StudentList.action">戻る</a>
 		</div>

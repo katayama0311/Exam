@@ -6,7 +6,7 @@
 <div class="wrapper">
 	<%@include file="../kyoutu/login-sidebar.jsp" %>
 	<div class="main">
-		<div>
+		<div id="kanryo">
 			<h2>科目情報削除</h2>
 			<p>削除が完了しました</p>
 			<a href="../subject/Subject.action">科目一覧</a>
