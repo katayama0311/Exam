@@ -9,7 +9,7 @@
 		<ul>
 			<li><a href="">成績登録</a></li>
 			<li><a href="../testlist/TestList.action">成績管理</a></li>
-			<li><a href="">成績参照</a>
+			<li><a href="../testlist/TestSubjectList.action">成績参照</a>
 		</ul>
 		<li><a href="../subject/Subject.action">科目管理</a></li>
 	</ul>

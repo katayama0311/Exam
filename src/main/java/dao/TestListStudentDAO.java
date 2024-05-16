@@ -45,7 +45,10 @@ public class TestListStudentDAO extends DAO {
 		st.setString(1, student.getNo());
 		ResultSet rs = st.executeQuery();
 		
-		list = postFilter(rs);
+		while (rs.next()) {
+			TestListStudent tlst=new TestListStudent();
+			tlst.setSubjectName(rs.getInt())
+		}
 		st.close();
 		con.close();
 		
