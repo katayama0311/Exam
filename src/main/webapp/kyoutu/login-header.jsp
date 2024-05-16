@@ -12,9 +12,9 @@
 </head>
 <header>
 	<h1>得点管理システム</h1>
+	<a href="../Log/logout-in.jsp">ログアウト</a>
 	<form action="../log/Login.action">
 		<a>${ teacher.name}様</a>
 	</form>
-	<a href="../Log/logout-in.jsp">ログアウト</a>
 </header>
 <body>

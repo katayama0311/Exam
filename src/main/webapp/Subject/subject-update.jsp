@@ -9,17 +9,21 @@
 		<div>
 			<h2>科目情報登録</h2>
 			<form action="../subject/Subject_updateexe.action">
-				<label for="cd">科目コード</label>
-				<input type="text" name="cd" value="${ subject.cd}" readonly>
-				<br>
-			
-				<label for="name">科目名</label>
-				<input type="text" name="name" value="${ subject.name}" maxlength=20 required>
+				<div id="noin">
+					<label for="cd">科目コード</label><br>
+					<input type="text" name="cd" value="${ subject.cd}" readonly>
+				</div>
 				<br>
 				
-				<td>
+				<div id="in">
+					<label for="name">科目名</label><br>
+					<input type="text" name="name" value="${ subject.name}" maxlength=20 required>
+				</div>
+				<br>
+				
+				<div id="subm">
 					<input type="submit" value="変更">
-				</td>
+				</div>
 			</form>
 			<a href="../subject/Subject.action">戻る</a>
 		</div>

@@ -7,7 +7,7 @@
 	<div class="main">
 		<h2>科目管理</h2>
 		<table>
-			<a href="../Subject/subject-entry.jsp">新規登録</a> <!-- 科目登録画面に遷移させる -->
+			<a href="../Subject/subject-entry.jsp" id="a">新規登録</a> <!-- 科目登録画面に遷移させる -->
 			<tr>
 				<th>科目コード</th>
 				<th>科目名</th>

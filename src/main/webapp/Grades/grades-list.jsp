@@ -7,9 +7,7 @@
 	<%@include file="../kyoutu/login-sidebar.jsp" %>
 	<div class="main">
 		<%@include file="grades-list-form.jsp" %>
-		
-		<p>科目：${ subject.name} (${ no}回)
-		
+
 	</div>
 </div>
 <%@include file="../kyoutu/footer.jsp" %>
