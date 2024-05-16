@@ -9,13 +9,13 @@
 		<div>
 			<h2>学生情報変更</h2>
 			<form action="../student/StudentUpdateExecute.action">
-				<div id="in">
+				<div id="noin">
 					<label for="ent_year">入学年度</label><br>
 					<input type="text" name="ent_year" value="${ student.entYear}" readonly>
 				</div>
 				<br>
 				
-				<div id="in">
+				<div id="noin">
 					<label for="no">学生番号</label><br>
 					<input type="text" name="no" value="${ student.no}" readonly>
 				</div>
@@ -49,8 +49,10 @@
 					</c:choose>
 				</div>
 				<br>
-
-				<input  type="submit" value="変更">
+				
+				<div id="subm">
+					<input  type="submit" value="変更">
+				</div>
 			</form>
 		<a href="../student/StudentList.action">戻る</a>
 		</div>
