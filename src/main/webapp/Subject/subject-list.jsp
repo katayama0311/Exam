@@ -11,6 +11,8 @@
 			<tr>
 				<th>科目コード</th>
 				<th>科目名</th>
+				<th></th>
+				<th></th>
 			</tr>
 			<c:forEach var="subject" items="${subject_list }">
 				<tr>

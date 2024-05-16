@@ -3,7 +3,7 @@
 		<div>
 			<h2>成績管理</h2>
 			
-			<form action="../testlist/TestListExecute.action" method="post">
+			<form action="../testlist/TestListExecute.action" method="post" id="form">
 				<label for="f1">入学年度</label>
 				<select name="f1" id="f1">
 					<option value="-1">--------</option>

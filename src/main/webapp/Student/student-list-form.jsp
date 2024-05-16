@@ -4,7 +4,7 @@
 	<h2>学生管理</h2>
 	
 	<a href="../Student/student-create.jsp">新規登録</a><p>
-	<form action="StudentExecute.action" method="post">
+	<form action="StudentExecute.action" method="post" id="form">
 		<label for="f1">入学年度</label>
 		<select name="f1" id="f1">
 			<c:choose>
