@@ -6,7 +6,7 @@
 <div class="wrapper">
 	<%@include file="../kyoutu/login-sidebar.jsp" %>
 	<div class="main">
-		<div>
+		<div id="kanryo">
 			<h2>学生情報更新</h2>
 			<p>変更が完了しました</p>
 			<a href="../student/StudentList.action">学生一覧</a>
