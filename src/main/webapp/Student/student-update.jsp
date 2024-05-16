@@ -38,14 +38,14 @@
 				<br>
 
 				<div id="che">
-				<c:choose>
-					<c:when test="${ student.isAttend == true}">
-						<label><input type="checkbox" name="is_attend" value="true" checked>在学中</label>
-					</c:when>
-					<c:otherwise>
-						<label><input type="checkbox" name="is_attend" value="true">在学中</label>
-					</c:otherwise>
-				</c:choose>
+					<c:choose>
+						<c:when test="${ student.isAttend == true}">
+							<label><input type="checkbox" name="is_attend" value="true" checked>在学中</label>
+						</c:when>
+						<c:otherwise>
+							<label><input type="checkbox" name="is_attend" value="true">在学中</label>
+						</c:otherwise>
+					</c:choose>
 				</div>
 				<br>
 
