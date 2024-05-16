@@ -108,10 +108,15 @@ table th {
 	border-bottom: solid 1px rgb(0, 0, 0);
 	color: rgb(0, 0, 0)
 }
-
 table td {
 	padding: 10px;
  	border-bottom: solid 1px rgb(192, 192, 192);
+}
+
+/* 入力画面 */
+#kanryo p {
+	background-color: rgb(126, 190, 190);
+	text-align: center;
 }
 #sel select{
 	width: 80%;
