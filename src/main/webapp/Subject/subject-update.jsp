@@ -7,7 +7,7 @@
 	<%@include file="../kyoutu/login-sidebar.jsp" %>
 	<div class="main">
 		<div>
-			<h2>科目情報登録</h2>
+			<h2>科目情報更新</h2>
 			<form action="../subject/Subject_updateexe.action">
 				<div id="noin">
 					<label for="cd">科目コード</label><br>

@@ -11,8 +11,6 @@
 			<input type="password" name="password" id="password" placeholder="パスワードを入力してください" maxlengt=20 required/>
 			<br>
 			<label for="chk_d_ps"><input type="checkbox" id="chk_d_ps" onchange="togglePasswordVisibility()" />パスワードを表示する</label>
-
-
 			<br>
 			<input type="submit" name="login" value="ログイン">
 			<script>
