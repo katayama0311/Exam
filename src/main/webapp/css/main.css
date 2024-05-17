@@ -32,7 +32,7 @@ header a {
 	border-radius: 3px;
 	padding: 6px 0 6px 0;
 }
-#login input[name="id"], input[name="password"] {
+#login input[name="id"], input[name="password"] , input[name="text"]{
 	border: 1px solid darkgray;
 	padding: 10px 160px 10px 15px;
 	border-radius: 5px;
